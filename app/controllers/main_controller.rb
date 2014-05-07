@@ -1,12 +1,15 @@
 class MainController < ApplicationController
-# This is where I API calls will go!
-
-	# def home
-	# 	show.html.erb
-	# end
+require 'rest-client'
 
 	def show_all
-		
+		show_all = RestClient.get "http://services.my511.org/Transit2.0/GetAgencies.aspx?token=#{ENV[511_KEY]}"
+		puts show_all
 	end
+
+
+
+
+
+
 
 end
