@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :main
-  root :to => 'main#show'
+  resources :main, :only => [:index]
+  resources :agencies, :only => [:index, :show]
+  root :to => 'main#index'
 
-  get 'main/new' => 'main#show_all'
+  # get 'main/show_all' => 'main#show_all'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
