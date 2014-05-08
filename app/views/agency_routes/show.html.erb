@@ -1,0 +1,10 @@
+<p> List </p>
+
+<% @code_results["RTT"]["AgencyList"]["Agency"]["RouteList"]["Route"][:code].each do |route| %>
+  <div class="row">
+   <!-- Want "route code" sent to params hash and "route name" displayed as link title -->
+
+   <%= link_to route["Name"], agency_routes_path(:route => route["Code"]) %>
+
+  </div>
+<% end %>

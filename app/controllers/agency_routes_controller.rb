@@ -8,6 +8,7 @@ class AgencyRoutesController < ApplicationController
 	end
 
 	def stops
+		@stops = RestClient.get("http://services.my511.org/Transit2.0/GetStopsForRoute?.aspx", :params => {:token => ENV['511_KEY'], :routeIDF => params[:agency], :routeCode => params[:code]})
 		# TODO stops for routes use route code and direction
 		# TODO check to see how to pull "route name" and "direction code" from params
 		# TODO error checking for routes that have a direction OR just choose a single agency to work with

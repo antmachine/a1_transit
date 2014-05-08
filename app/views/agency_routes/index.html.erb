@@ -6,7 +6,7 @@
   <div class="row">
    <!-- Want "route code" sent to params hash and "route name" displayed as link title -->
 
-   <%= link_to route["Name"], route["Code"] %>
+   <%= link_to route["Name"], stops_path("BART", route["Code"]) %>
 
   </div>
 <% end %>
