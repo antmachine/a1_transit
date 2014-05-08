@@ -1,7 +1,7 @@
 class MainController < ApplicationController
 
 
-
+#TODO Delete any unecesary contrllers and views
 
 
 
