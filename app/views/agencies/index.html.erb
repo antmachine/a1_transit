@@ -1,12 +1,20 @@
 <!-- List of links to all agencies -->
 <p> List </p>
 
-<% @results.each do |agency| %>
+<% @results["RTT"]["AgencyList"]["Agency"].each do |agency| %>
   <div class="row">
-     <div class="col-md-4 col-sm-4">
-      <p class="lead">
-      	<p>Page!</p>
-    </div>
+   
+   <%= agency["Name"] %>
+   
   </div>
 <% end %>
+
+
+parsed['Search'].each do |movie|
+	#try putting the full link to poster rather than the imdbID
+str += "<br><a href=poster/#{movie["imdbID"]}> #{movie["Title"]} - #{movie["Year"]} </a><br>"
+	end
+	str
+end
+
 
