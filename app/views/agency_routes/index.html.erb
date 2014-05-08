@@ -1,0 +1,11 @@
+<!-- show the routes for a specific agency -->
+
+<p> List </p>
+
+<% @route_results["RTT"]["AgencyList"]["Agency"]["RouteList"]["Route"].each do |route| %>
+  <div class="row">
+   
+   <%= link_to route["Name"], route["Code"] %>
+   
+  </div>
+<% end %>

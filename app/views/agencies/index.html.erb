@@ -4,17 +4,12 @@
 <% @results["RTT"]["AgencyList"]["Agency"].each do |agency| %>
   <div class="row">
    
-   <%= agency["Name"] %>
+   <%= link_to agency["Name"], agency["Name"] %>
    
   </div>
 <% end %>
 
 
-parsed['Search'].each do |movie|
-	#try putting the full link to poster rather than the imdbID
-str += "<br><a href=poster/#{movie["imdbID"]}> #{movie["Title"]} - #{movie["Year"]} </a><br>"
-	end
-	str
-end
+<!-- link_to "Text", URL -->
 
 
