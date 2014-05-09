@@ -1,0 +1,11 @@
+<p> List of stops for <%= "#{params[:agency]}" %> on </p>
+
+<% @stops_no_d["RTT"]["AgencyList"]["Agency"]["RouteList"]["Route"].each do |stop| %>
+  <div class="row">
+   <!-- Want "route code" sent to params hash and "route name" displayed as link title -->
+   <!-- BART "Name" is empty error check for this -->
+
+   <%= link_to stop[1], stops_path(@stops_no_d["RTT"]["AgencyList"]["Agency"]["RouteList"]["Route"]["Name"], @stops_no_d["RTT"]["AgencyList"]["Agency"]["RouteList"]["Route"]["Code"]) %>
+
+  </div>
+<% end %>

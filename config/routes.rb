@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :main, :only => [:index]
-  root to: 'main#index'
-  get '/agencies', to: 'agencies#index', as: 'agencies'
-  get '/agencies/:agency', to: 'agency_routes#index', as: 'agency'
-  get '/agencies/:agency/:code', to: 'agency_routes#stops', as: 'stops'
+  root to: 'agencies#index_of_agencies'
+  get '/:agency', to: 'agencies#list_routes_for_agency', as: 'agencies'
+  get '/:agency/:code', to: 'agencies#route_no_direction', as: 'stops'
+  # get '/:agency/:route/:code', to:
 
-  # get'/:agency/:routeCode', to: 'agency_routes#stops'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

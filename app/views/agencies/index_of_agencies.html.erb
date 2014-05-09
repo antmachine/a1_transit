@@ -1,0 +1,12 @@
+<!-- Lists all agencies running as a link -->
+<p> List of Available Agencies </p>
+
+    <!-- Display the agency names and pass to params hash -->
+    <% @agencies_list["RTT"]["AgencyList"]["Agency"].each do |agency| %>
+      <div class="row">
+        <%= link_to agency["Name"], agencies_path(agency["Name"]) %>
+      </div>
+    <% end %>
+
+
+<!-- NOTES: link_to "Title", new_my_service_path(:account_id => http://acct.id) -->

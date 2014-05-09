@@ -1,0 +1,11 @@
+<!-- Shows the routes for a specific agency as links -->
+
+<p> List of Routes for <%= "#{params[:agency]}" %> </p>
+
+<% @agency_route_results["RTT"]["AgencyList"]["Agency"]["RouteList"]["Route"].each do |route| %>
+  <div class="row">
+   <!-- Want "route code" sent to params hash and "route name" displayed as link title -->
+   <!-- BART "Name" is empty error check for this -->
+   <%= link_to route["Name"], stops_path(@agency_route_results["RTT"]["AgencyList"]["Agency"]["Name"], route["Code"]) %>
+  </div>
+<% end %>

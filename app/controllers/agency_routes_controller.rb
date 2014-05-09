@@ -1,6 +1,6 @@
 class AgencyRoutesController < ApplicationController
 
-# TODO find out why %20 is in params, but removed when passed to method.
+
 	def index
 		# Manually encode the params to avoid errors with spaces and such.
 		@raw_xml = RestClient.get("http://services.my511.org/Transit2.0/GetRoutesForAgency.aspx", :params => {:token => ENV['511_KEY'], :agencyName => params[:agency]})
