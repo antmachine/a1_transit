@@ -10,14 +10,14 @@ class AgenciesController < ApplicationController
 		@raw_xml_routes = RestClient.get("http://services.my511.org/Transit2.0/GetRoutesForAgency.aspx", :params => {:token => ENV['511_KEY'], :agencyName => params[:agency]})
 		@agency_route_results = Hash.from_xml(@raw_xml_routes)
 
-		if @agency_route_results["RTT"]["AgencyList"]["Agency"]["HasDirection"] == "True"
-			route_with_direction(APICall)
-		elsif @agency_route_results["RTT"]["AgencyList"]["Agency"]["HasDirection"] == "False"
-			route_no_direction(APICall)
-		# TODO find out how many/ what directions are used by each route with a direction
-		else
-			puts "ERROR!"
-		end
+		# if @agency_route_results["RTT"]["AgencyList"]["Agency"]["HasDirection"] == "True"
+		# 	route_with_direction(APICall)
+		# elsif @agency_route_results["RTT"]["AgencyList"]["Agency"]["HasDirection"] == "False"
+		# 	route_no_direction(APICall)
+		# # TODO find out how many/ what directions are used by each route with a direction
+		# else
+		# 	puts "ERROR!"
+		# end
 	end
 
 	def route_no_direction
@@ -28,7 +28,9 @@ class AgenciesController < ApplicationController
 	end
 
 	def route_with_direction
-		# @raw_xml_stops_with_d = RestClient.get("http://services.my511.org/Transit2.0/GetStopsForRoute.aspx", :params =>
+		# TODO Dig into hash and get RouteDirection => [{"Code" => "South"}, {"Code" => "North"}]
+		# TODO Display names and ask for user to choose a directional route
+		@raw_xml_stops_no_d = RestClient.get("http://services.my511.org/Transit2.0/GetStopsForRoute.aspx", :params => {:token => ENV['511_KEY'], :routeIDF => "#{params[:agency]}~#{params[:code]}~params[:]"})
 	end
 end
 # http://services.my511.org/Transit2.0/GetStopsForRoute.aspx?token=123-456- 789&routeIDF=AgencyName~RouteCode~RouteDirectionCode.
